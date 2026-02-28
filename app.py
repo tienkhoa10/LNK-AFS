@@ -242,3 +242,6 @@ Có thể luyện bài đọc học thuật dài hơn.
 Hãy tập trung cải thiện kỹ năng yếu nhất trước,
 sau đó nâng dần độ khó để phát triển đồng đều.
 """)
+
+                
+    
