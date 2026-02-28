@@ -124,30 +124,121 @@ for i, (question, options, correct) in enumerate(questions):
 
 if st.button("Submit & Get Result"):
 
-    score = 0
+    grammar_score = 0
+    vocab_score = 0
+    reading_score = 0
 
     for i, (question, options, correct) in enumerate(questions):
         answer = st.session_state.get(f"question_{i}")
+
         if answer == options[correct]:
-            score += 1
 
-    st.success(f"Your Score: {score}/50")
+            # Grammar: câu 0-19
+            if i <= 19:
+                grammar_score += 1
 
-    if score < 20:
-        level = "Beginner"
-    elif score < 35:
-        level = "Intermediate"
+            # Vocabulary: câu 20-34
+            elif i <= 34:
+                vocab_score += 1
+
+            # Reading: câu 35-49
+            else:
+                reading_score += 1
+
+    total_score = grammar_score + vocab_score + reading_score
+
+    st.success(f"🎯 Tổng điểm: {total_score}/50")
+
+    st.markdown("## 📊 Phân tích theo từng kỹ năng")
+
+    st.write(f"🔹 Grammar: {grammar_score}/20")
+    st.write(f"🔹 Vocabulary: {vocab_score}/15")
+    st.write(f"🔹 Reading: {reading_score}/15")
+
+    # =============================
+    # ĐÁNH GIÁ CHI TIẾT
+    # =============================
+
+    st.markdown("---")
+    st.markdown("## 🔎 Đánh giá chuyên sâu")
+
+    # ===== GRAMMAR =====
+    if grammar_score < 10:
+        st.warning("### 🧩 Grammar: Yếu")
+        st.write("""
+Bạn còn nhầm lẫn về thì, cấu trúc câu và mệnh đề.
+Cần ôn lại nền tảng 12 thì và cấu trúc câu cơ bản.
+""")
+    elif grammar_score < 16:
+        st.info("### 🧩 Grammar: Trung bình")
+        st.write("""
+Bạn nắm cơ bản tốt nhưng còn sai ở câu phức, điều kiện và bị động.
+Nên luyện thêm cấu trúc nâng cao.
+""")
     else:
-        level = "Advanced"
+        st.success("### 🧩 Grammar: Tốt")
+        st.write("""
+Bạn kiểm soát cấu trúc ngữ pháp khá chắc.
+Chỉ cần tinh chỉnh độ chính xác và tự nhiên khi viết.
+""")
 
-    st.markdown(f"## Your Level: {level}")
-
-    if level == "Beginner":
-        st.write("• Focus on basic grammar and vocabulary.")
-        st.write("• Practice daily reading.")
-    elif level == "Intermediate":
-        st.write("• Improve writing and speaking skills.")
-        st.write("• Expand academic vocabulary.")
+    # ===== VOCAB =====
+    if vocab_score < 7:
+        st.warning("### 📖 Vocabulary: Yếu")
+        st.write("""
+Vốn từ còn hạn chế, đặc biệt là collocations và giới từ.
+Nên học theo chủ đề và ghi nhớ theo cụm từ.
+""")
+    elif vocab_score < 12:
+        st.info("### 📖 Vocabulary: Trung bình")
+        st.write("""
+Bạn có nền tảng từ vựng khá.
+Cần mở rộng từ học thuật và từ đồng nghĩa.
+""")
     else:
-        st.write("• Practice IELTS/TOEFL tests.")
-        st.write("• Focus on advanced writing structures.")
+        st.success("### 📖 Vocabulary: Tốt")
+        st.write("""
+Vốn từ phong phú và dùng khá chính xác.
+Có thể nâng lên mức học thuật cao hơn.
+""")
+
+    # ===== READING =====
+    if reading_score < 7:
+        st.warning("### 📚 Reading: Yếu")
+        st.write("""
+Bạn đọc còn chậm và phụ thuộc dịch từng từ.
+Cần luyện kỹ năng skim và scan.
+""")
+    elif reading_score < 12:
+        st.info("### 📚 Reading: Trung bình")
+        st.write("""
+Bạn hiểu nội dung chính nhưng còn mất điểm chi tiết.
+Cần luyện kỹ năng suy luận.
+""")
+    else:
+        st.success("### 📚 Reading: Tốt")
+        st.write("""
+Bạn đọc hiểu nhanh và nắm ý chính tốt.
+Có thể luyện bài đọc học thuật dài hơn.
+""")
+
+    # =============================
+    # ĐÁNH GIÁ TỔNG THỂ
+    # =============================
+
+    st.markdown("---")
+    st.markdown("## 🧠 Đánh giá tổng thể")
+
+    if total_score < 20:
+        overall = "Beginner"
+    elif total_score < 35:
+        overall = "Intermediate"
+    else:
+        overall = "Advanced"
+
+    st.markdown(f"### 🌟 Trình độ tổng thể: {overall}")
+
+    st.markdown("""
+Hãy tập trung cải thiện kỹ năng yếu nhất trước,
+sau đó nâng dần độ khó để phát triển đồng đều.
+""")
