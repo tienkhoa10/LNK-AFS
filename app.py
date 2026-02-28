@@ -238,9 +238,164 @@ Có thể luyện bài đọc học thuật dài hơn.
 
     st.markdown(f"### 🌟 Trình độ tổng thể: {overall}")
 
+    # =============================
+# QUY ĐỔI BAND ƯỚC LƯỢNG
+# =============================
+
+if total_score < 20:
+    band = "4.0 – 4.5"
+elif total_score < 30:
+    band = "5.0 – 5.5"
+elif total_score < 40:
+    band = "6.0 – 6.5"
+elif total_score < 45:
+    band = "7.0"
+else:
+    band = "7.5+"
+
+st.markdown(f"## 🏆 Band ước lượng tương đương: {band}")
+
+# =============================
+# PHÂN TÍCH CHUYÊN SÂU
+# =============================
+
+st.markdown("## 🔎 Phân tích chi tiết năng lực")
+
+if total_score < 20:
+
+    st.warning("""
+Bạn đang ở mức nền tảng.
+
+Vấn đề chính:
+• Ngữ pháp chưa chắc 12 thì
+• Từ vựng còn hạn chế
+• Đọc còn dịch từng từ
+• Thiếu chiến lược làm bài
+
+Bạn chưa có nền móng đủ để làm bài thi học thuật.
+""")
+
+elif total_score < 35:
+
+    st.info("""
+Bạn đã có nền tảng tương đối.
+
+Điểm mạnh:
+• Nắm được cấu trúc cơ bản
+• Hiểu ý chính bài đọc
+
+Điểm yếu:
+• Sai câu nâng cao
+• Dễ mất điểm ở chi tiết nhỏ
+• Thiếu vốn từ học thuật
+""")
+
+else:
+
+    st.success("""
+Bạn có nền tảng khá tốt.
+
+Bạn có khả năng đạt mức học thuật.
+Cần tập trung tăng độ chính xác và tốc độ xử lý.
+""")
+
+# =============================
+# LỘ TRÌNH HỌC THỰC TẾ 12 TUẦN
+# =============================
+
+st.markdown("## 📅 Lộ trình học 12 tuần (Thực tế & hiệu quả)")
+
+if total_score < 20:
+
     st.markdown("""
-Hãy tập trung cải thiện kỹ năng yếu nhất trước,
-sau đó nâng dần độ khó để phát triển đồng đều.
+### Giai đoạn 1 (Tuần 1–4): Xây nền
+
+Mỗi ngày 90 phút:
+
+• 30 phút: Ôn 12 thì tiếng Anh  
+• 30 phút: Học 20 từ vựng/ngày (theo chủ đề)  
+• 30 phút: Đọc đoạn văn 300–400 từ  
+
+Mục tiêu: Không còn dịch từng từ.
+
+---
+
+### Giai đoạn 2 (Tuần 5–8): Củng cố
+
+• Làm 1 passage Reading/ngày  
+• Luyện dạng True/False/Not Given  
+• Ghi lại toàn bộ lỗi sai  
+
+---
+
+### Giai đoạn 3 (Tuần 9–12): Ứng dụng
+
+• Làm full test 60 phút  
+• Phân tích lỗi ít nhất 45 phút sau mỗi bài  
+• Mục tiêu đạt 60%+
+""")
+
+elif total_score < 35:
+
+    st.markdown("""
+### Giai đoạn 1 (Tuần 1–4): Nâng cấp kỹ năng
+
+• Luyện paraphrase mỗi ngày  
+• Học collocations & từ đồng nghĩa  
+• Làm 2 passages/ngày  
+
+---
+
+### Giai đoạn 2 (Tuần 5–8): Tăng tốc
+
+• Full test 3 lần/tuần  
+• Quản lý thời gian 15-20-25 phút  
+• Tăng tốc độ đọc lên 200 từ/phút  
+
+---
+
+### Giai đoạn 3 (Tuần 9–12): Tối ưu
+
+• Giảm lỗi bất cẩn  
+• Phân tích kỹ từng câu sai  
+• Mục tiêu 75–80%
+""")
+
+else:
+
+    st.markdown("""
+### Giai đoạn 1 (Tuần 1–4):
+
+• Duy trì 1 full test/ngày  
+• Tập trung vào độ chính xác  
+
+---
+
+### Giai đoạn 2 (Tuần 5–8):
+
+• Luyện Cambridge 12–18  
+• Mục tiêu 85%+  
+
+---
+
+### Giai đoạn 3 (Tuần 9–12):
+
+• Mô phỏng thi thật mỗi tuần  
+• Giữ phong độ ổn định  
+""")
+
+# =============================
+# HƯỚNG DẪN KHẮC PHỤC CỤ THỂ
+# =============================
+
+st.markdown("## 🛠 Cách khắc phục hiệu quả")
+
+st.markdown("""
+1️⃣ Không đọc toàn bài trước.  
+2️⃣ Đọc câu hỏi → gạch keyword → scan tìm đoạn.  
+3️⃣ Luôn tìm bằng chứng trong bài.  
+4️⃣ Không trả lời theo suy nghĩ cá nhân.  
+5️⃣ Sau mỗi bài test, dành ít nhất 30 phút phân tích lỗi.  
 """)
 
                 
